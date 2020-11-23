@@ -1,0 +1,21 @@
+name: Deploy Dev
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+    types: [closed]
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: trigger single job
+        uses: appleboy/jenkins-action@master
+        with:
+          url: ${{jenkins_url}}
+          user: ${{jenkins_user}}
+          token: 1145f5f2e891ffa45465e1665f65b0422f
+          job: jenkins-todo-list-principal
